@@ -14,8 +14,15 @@ As I am developing this for my employer, there are a couple modules taking the f
 
 ## Installation
 ```
+cordova plugin add https://github.com/cjschooley/cordova-plugin-node.git
+```
+
+You may also install the plugin via the NPM Registry, but it is not recommended at this time; NPM strips out all Symbolic Links upon publishing thus screwing with the iOS Framework copied within this repository.
+```
 cordova plugin add cordova-plugin-node
 ```
+
+I will continue to maintain the package there as well regardless.
 
 ## Methods
 * `node.connect`
