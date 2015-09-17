@@ -17,7 +17,7 @@ As I am developing this for my employer, there are a couple modules taking the f
 cordova plugin add https://github.com/cjschooley/cordova-plugin-node.git
 ```
 
-You may also install the plugin via the NPM Registry, but it is not recommended at this time; NPM strips out all Symbolic Links upon publishing thus screwing with the iOS Framework copied within this repository.
+You may also install the plugin via the NPM Registry, but it is not recommended at this time; NPM strips out all Symbolic Links upon publishing thus screwing with the iOS Framework copied within this repository. Please see Cordova Issue [CB-6092](https://issues.apache.org/jira/browse/CB-6092); linked therein, also, NPM Issue [3310](https://github.com/npm/npm/issues/3310).
 ```
 cordova plugin add cordova-plugin-node
 ```
