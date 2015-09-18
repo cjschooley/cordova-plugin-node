@@ -52,7 +52,7 @@
   NSString *uuid = self.selectedNodeDeviceUUID;
   CBPeripheral *peripheral = [self findPeripheralByUUID:uuid];
 
-  if (peripheral && peripheral.isConnected) {
+  if (peripheral && peripheral.state != CBPeripheralStateDisconnected) {
     [manager cancelPeripheralConnection:peripheral];
 
     listenForDisconnectCallbackContext = [command.callbackId copy];
@@ -308,7 +308,7 @@
   NSArray * peripherals = [self.manager retrievePeripheralsWithIdentifiers:@[[[NSUUID alloc] initWithUUIDString:uuid]]];
 
   for (CBPeripheral *p in peripherals) {
-    NSString* other = CFBridgingRelease(CFUUIDCreateString(nil, p.UUID));
+    NSString* other = p.identifier.UUIDString;
     if ([uuid isEqualToString:other]) {
       peripheral = p;
       break;
