@@ -22,7 +22,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-node"
-    version="0.1.0">
+    version="0.1.1">
     <name>Node</name>
     <description>Cordova Plugin for the Node+ Platform developed by Variable, Inc.</description>
     <license>Apache 2.0</license>

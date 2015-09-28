@@ -68,19 +68,43 @@
 // TODO: this needs documented
 // TODO: actually return this data...
 - (void)getDetails:(CDVInvokedUrlCommand*)command {
+  NSString *moduleA = @"";
+  NSString *moduleB = @"";
+
+  switch ([self.selectedNodeDevice module_a_type]) {
+      case VTNodeModuleTypeTherma:
+          moduleA = @"Therma";
+          break;
+      case VTNodeModuleTypeThermocouple:
+          moduleA = @"Thermocouple";
+          break;
+      default:
+          break;
+  }
+
+  switch ([self.selectedNodeDevice module_b_type]) {
+      case VTNodeModuleTypeTherma:
+          moduleB = @"Therma";
+          break;
+      case VTNodeModuleTypeThermocouple:
+          moduleB = @"Thermocouple";
+          break;
+      default:
+          break;
+  }
+
   NSMutableDictionary *peripheral = [NSMutableDictionary
     dictionaryWithDictionary:@{
       //  @"name" : [self.selectedNodeDevice name],
       @"model" : [self.selectedNodeDevice model],
-      //  @"id" : @"",
-      //  @"uuid" : @"",
+      @"id" : self.selectedNodeDeviceUUID,
       @"serial" : [self.selectedNodeDevice serialNumber],
-      //  @"battery" : [self.selectedNodeDevice batteryLevel],
-      //  @"firmware" : [NSString stringWithFormat: @"%.2f.%.2f", [self.selectedNodeDevice firmwareMajorRev], [self.selectedNodeDevice firmwareMinorRev]],
+      @"batteryVolts": [NSNumber numberWithFloat:[self.selectedNodeDevice batteryLevel]],
+      // @"firmware" : [NSString stringWithFormat: @"%@.%@", [NSString stringWithUTF8String:(char *)[self.selectedNodeDevice firmwareMajorRev]], [NSString stringWithUTF8String:(char *)[self.selectedNodeDevice firmwareMinorRev]]],
       @"signal" : @"",
-      //  @"moduleA" : [self.selectedNodeDevice module_a_type],
+      @"moduleA" : moduleA,
       @"moduleASerial" : [self.selectedNodeDevice moduleASerial],
-      //  @"moduleB" : [self.selectedNodeDevice module_b_type],
+      @"moduleB" : moduleB,
       @"moduleBSerial" : [self.selectedNodeDevice moduleBSerial]
     }
   ];
